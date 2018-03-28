@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+
+      <%= link_to "Haengsung", root_path, class: "navbar-brand" %>
+      
+      <span class="navbar-text">
+        At-a-glance planetary ephermerides.
+      </span>
+
+    </nav>
     <%= yield %>
   </body>
 </html>
