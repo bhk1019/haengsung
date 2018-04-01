@@ -1,7 +1,14 @@
 <h1>Here are the planets and their current signs.</h1>
+<br />
+
+<h2>The current time is: <%= @current_time.inspect %> </h2>
 
 <% @planets.each do |planet| %>
-  <%= planet.name %>
-  <%= planet.description %>
-  <%= planet.current_sign %>
+  Planet name: <%= planet.name %> <br/>
+  Description: <%= planet.description %> <br/>
+  Current sign: <%= planet.current_sign %> <br/>
+  Changes sign at: <%= planet.changes_sign_at %> <br/>
+  SWE ID: <%= planet.swe_id %> <br/>
 <% end %>
+
+<br />
