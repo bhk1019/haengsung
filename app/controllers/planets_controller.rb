@@ -1,7 +1,7 @@
 class PlanetsController < ApplicationController
 
   def index
-    @planet = Planet.all
+    @planets = Planet.all
   end
 
 end

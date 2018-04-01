@@ -1,1 +1,7 @@
 <h1>Here are the planets and their current signs.</h1>
+
+<% @planets.each do |planet| %>
+  <%= planet.name %>
+  <%= planet.description %>
+  <%= planet.current_sign %>
+<% end %>
