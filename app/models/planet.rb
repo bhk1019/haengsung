@@ -2,19 +2,25 @@ class Planet < ApplicationRecord
   attr_accessor :current_sign
 
   def set_current_sign
-    current_longitude = current_longitude_of(self)
-    @current_sign = longitude_to_sign(current_longitude)
+    @current_sign = longitude_to_sign(self.current_longitude)
   end
 
-  def current_longitude_of(planet)
-    current_time = Time.new
-    year = current_time.year
-    month = current_time.month
-    day = current_time.day
-    hour = current_time.hour
+  def set_changes_sign_at
+    next_sign = self.longitude_at()
+  end
+
+  def longitude_at(time)
+    year = time.year
+    month = time.month
+    day = time.day
+    hour = time.hour
     jd = Swe4r::swe_julday(year, month, day, hour)
-    body = Swe4r::swe_calc_ut(jd, planet.swe_id, Swe4r::SEFLG_MOSEPH)
+    body = Swe4r::swe_calc_ut(jd, self.swe_id, Swe4r::SEFLG_MOSEPH)
     return body[0]
+  end
+
+  def current_longitude
+    self.longitude_at(Time.new)
   end
 
   def longitude_to_sign(longitude)
