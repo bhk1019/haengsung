@@ -6,7 +6,29 @@ class Planet < ApplicationRecord
   end
 
   def set_changes_sign_at
-    next_sign = self.longitude_at()
+    time_step = 86400
+    changes_sign_at = Time.new
+    next_sign = self.current_sign
+    while next_sign == self.current_sign
+      next_sign = longitude_to_sign(self.longitude_at(changes_sign_at + time_step))
+      if next_sign != self.current_sign
+        time_step = 3600
+        next_sign = longitude_to_sign(self.longitude_at(changes_sign_at + time_step))
+        if next_sign != self.current_sign
+          @changes_sign_at = changes_sign_at
+          return
+        end
+        while next_sign == self.current_sign
+          next_sign = longitude_to_sign(self.longitude_at(changes_sign_at + time_step))
+          if next_sign != self.current_sign
+            @changes_sign_at = changes_sign_at
+            return
+          end
+          changes_sign_at += time_step
+        end
+      end
+      changes_sign_at += time_step
+    end
   end
 
   def longitude_at(time)
@@ -57,5 +79,4 @@ class Planet < ApplicationRecord
     return sign
   end
 
-  
 end
