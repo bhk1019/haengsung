@@ -1,4 +1,9 @@
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Rubik:400,500');
+
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+}
 
 .planet-box {
   margin: auto 0;
@@ -11,4 +16,13 @@
 
 h5 {
   text-align: center;
+}
+
+.btn-link {
+  color: black;
+  font-size: 1.5em;
+}
+
+.btn-link:hover, .btn-link:visited, .btn-link:active, .btn-link:focus {
+  text-decoration: none;
 }
