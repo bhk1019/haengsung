@@ -3,18 +3,33 @@
 
 <h2>The current time is: <%= @current_time.inspect %> </h2>
 
-<div class="row">
-  <% @planets.each do |planet| %>
-    <div class="planet-box col-10 col-sm-4">
-      Planet name: <%= planet.name %> <br/>
-      Description: <%= planet.description %> <br/>
-      Current sign: <%= planet.current_sign %> <br/>
-      Changes sign at: <%= planet.changes_sign_at %> <br/>
-      SWE ID: <%= planet.swe_id %> <br/>
-      <br />
+<div class="container">
+
+    <div class="accordion">
+      <% @planets.each do |planet| %>
+
+          <div class="card">
+            <img class="card-img-top" src="http://via.placeholder.com/350x350" alt="Card image cap">
+            <div class="card-header" id="heading<%= planet.name %>">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-<%= planet.name %>" aria-expanded="true" aria-controls="collapse-<%= planet.name %>" style="margin: auto;">
+                  <%= planet.name %> in <%= planet.current_sign %>
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapse-<%= planet.name %>" class="collapse" aria-labelledby="heading<%= planet.name %>" data-parent="#accordion">
+              <div class="card-body">
+                This planet represents: <%= planet.description %>
+              </div>
+            </div>
+          </div>
+
+
+        <br />
+        <br />
+      <% end %>
     </div>
-    <br />
-    <br />
-  <% end %>
+
 </div>
 <br />

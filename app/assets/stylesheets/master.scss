@@ -1,6 +1,14 @@
 @import "bootstrap";
 
 .planet-box {
-  background-color: grey;
-  color: white;
+  margin: auto 0;
+}
+
+.planet-card {
+  width: 100%;
+  border-radius: 0;
+}
+
+h5 {
+  text-align: center;
 }
