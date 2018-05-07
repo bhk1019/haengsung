@@ -59,3 +59,7 @@ gem 'jquery-rails'
 
 # Swiss Ephemeris
 gem 'swe4r'
+
+group :development, :test do
+  gem 'rspec-rails'
+end
