@@ -20,9 +20,13 @@ h5 {
 
 .btn-link {
   color: black;
-  font-size: 1.5em;
+  font-size: 100%;
 }
 
 .btn-link:hover, .btn-link:visited, .btn-link:active, .btn-link:focus {
   text-decoration: none;
+}
+
+.btn {
+  white-space: normal;
 }

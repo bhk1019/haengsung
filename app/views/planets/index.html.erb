@@ -6,9 +6,10 @@
 <div class="container">
 
     <div class="accordion">
-      
+      <div class="row">
       <% @planets.each do |planet| %>
-
+        
+        <div class="col-12 col-xs-6 col-sm-6 col-md-4 col-lg-3">
           <div class="card">
             <img class="card-img-top" src="http://via.placeholder.com/350x350" alt="Card image cap">
             <div class="card-header" id="heading<%= planet.name %>">
@@ -25,12 +26,13 @@
               </div>
             </div>
           </div>
+          <br />
+          <br />
 
-
-        <br />
-        <br />
+        </div>
+        
       <% end %>
-
+      </div>
     </div>
 
 </div>
