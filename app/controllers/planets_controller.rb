@@ -4,8 +4,7 @@ class PlanetsController < ApplicationController
 
   def index
     @planets = Planet.all
-    t = Time.new
-    @current_time = t.getlocal
+    @current_time = Time.new
     @planets.each do |planet|
       planet.set_current_sign
     end
