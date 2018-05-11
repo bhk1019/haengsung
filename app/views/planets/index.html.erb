@@ -1,7 +1,9 @@
-<h1>Here are the planets and their current signs.</h1>
-<br />
-
-<h2>The current UTC time is: <%= @current_time.strftime("%l:%M %p on %B %e, %Y") %> </h2>
+<div class="container">
+  <div class="col-8 offset-2">
+    <h4 class="text-center">At a glance planetary ephermerides.</h4>
+    <br />
+  </div>
+</div>
 
 <div class="container">
 
@@ -9,7 +11,7 @@
       <div class="row">
       <% @planets.each do |planet| %>
         
-        <div class="col-8 col-xs-5 col-sm-8 col-md-5 col-lg-4 offset-2 offset-md-1">
+        <div class="col-8 col-xs-8 col-sm-8 col-md-6 col-lg-4 offset-2 offset-md-3 offset-lg-1">
           <div class="card">
             <img class="card-img-top" src="http://via.placeholder.com/350x350" alt="Card image cap">
             <div class="card-header" id="heading<%= planet.name %>">
