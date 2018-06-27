@@ -74,10 +74,42 @@ class Planet < ApplicationRecord
     return longitude_to_sign(self.current_longitude + 30)
   end
 
-  def is_retrograde?
-    now = Time.new
+  def is_retrograde_at(time)
+    now = time
     one_minute_from_now = now + 60
     return self.longitude_at(now) > self.longitude_at(one_minute_from_now)
   end
+
+  def is_direct_at(time)
+    return !self.is_retrograde_at(time)
+  end
+
+  def is_retrograde?
+    return self.is_retrograde_at(Time.now)
+  end
+
+  def is_direct?
+    return self.is_direct_at(Time.now)
+  end
+
+  def next_station_from(time)
+    step = 60
+    now = time
+    one_step_from_now = now + step
+    original_direction = self.is_direct_at(now)
+    current_direction = original_direction
+    while current_direction == original_direction do
+      current_direction = self.longitude_at(one_step_from_now) > self.longitude_at(now)
+      now = one_step_from_now
+      one_step_from_now = now + step
+    end
+    return one_step_from_now
+  end
+
+  def next_station
+    return self.next_station_from(Time.now)
+  end
+
+
 
 end
