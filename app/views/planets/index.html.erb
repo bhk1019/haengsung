@@ -24,9 +24,29 @@
 
             <div id="collapse-<%= planet.name %>" class="collapse" aria-labelledby="heading<%= planet.name %>" data-parent="#accordion">
               <div class="card-body">
-                This planet represents: <%= planet.description %>
+                <p>
+                  This planet represents: <%= planet.description %>
+                </p>
                 <br />
-                This planet enters <%= planet.next_sign %> on <%= planet.changes_sign_at %>.
+                <p>
+                  Upcoming astrological events:
+                  <ul>
+                    <li>
+                      <%= planet.name %> enters <%= planet.next_sign %> on <%= planet.changes_sign_at %>.
+                    </li>
+                    <li>
+                      <% if planet.name != "Sun" %>
+                        <%= planet.name %> is currently 
+                          <% if planet.is_direct? %>
+                            direct. <%= planet.name %> will enter retrograde <%= planet.sign_at(planet.next_station) %> on <%= planet.next_station %>.
+                          <% else %>
+                            in retrograde. <%= planet.name %> will go direct <%= planet.sign_at(planet.next_station) %> on <%= planet.next_station %>.
+                          <% end %>
+                        <% end %>
+                    </li>
+
+                  </ul>
+                </p>
               </div>
             </div>
           </div>

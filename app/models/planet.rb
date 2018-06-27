@@ -16,6 +16,10 @@ class Planet < ApplicationRecord
     end
   end
 
+  def sign_at(time)
+    return longitude_to_sign(self.longitude_at(time))
+  end
+
   def longitude_at(time)
     year = time.year
     month = time.month
