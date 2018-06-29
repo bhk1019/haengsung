@@ -1,6 +1,5 @@
 class PlanetsController < ApplicationController
   require 'date'
-  helper_method :set_current_sign
 
   def index
     @planets = Planet.all
@@ -8,6 +7,10 @@ class PlanetsController < ApplicationController
     @planets.each do |planet|
       planet.set_current_sign
       planet.set_changes_sign_at
+      if planet.name != "Sun"
+        planet.set_is_retrograde
+      end
+      planet.save
     end
   end
 

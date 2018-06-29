@@ -9,7 +9,7 @@
 
     <div class="accordion">
       <div class="row">
-      <% @planets.each do |planet| %>
+      <% @planets.order(:swe_id).each do |planet| %>
         
         <div class="col-8 col-xs-8 col-sm-8 col-md-6 col-lg-4 offset-2 offset-md-3 offset-lg-1">
           <div class="card">
@@ -36,13 +36,8 @@
                     </li>
                     <% if planet.name != "Sun" %>
                       <li>
-                        <%= planet.name %> is currently 
-                          <% if planet.is_direct? %>
-                            direct. <%= planet.name %> will enter retrograde <%= planet.sign_at(planet.next_station) %> on <%= planet.next_station %>.
-                          <% else %>
-                            in retrograde. <%= planet.name %> will go direct <%= planet.sign_at(planet.next_station) %> on <%= planet.next_station %>.
-                          <% end %>
-                        </li>
+                        <%= planet.name %> is <% if planet.is_retrograde %> in retrograde. <% else %> direct. <% end %>
+                      </li>
                     <% end %>
                   </ul>
                 </p>

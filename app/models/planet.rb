@@ -1,18 +1,18 @@
 class Planet < ApplicationRecord
-  attr_accessor :current_sign
+
 
   def set_current_sign
-    @current_sign = longitude_to_sign(self.current_longitude)
+    self.current_sign = longitude_to_sign(self.current_longitude)
   end
 
   def set_changes_sign_at
     step = 3600
     steps_until_change = 0
-    @changes_sign_at = Time.new
+    self.changes_sign_at = Time.new
     initial_longitude = self.current_longitude
-    until @current_sign != longitude_to_sign(initial_longitude) do  
-      @changes_sign_at += step
-      initial_longitude = longitude_at(@changes_sign_at)
+    until self.current_sign != longitude_to_sign(initial_longitude) do  
+      self.changes_sign_at += step
+      initial_longitude = longitude_at(self.changes_sign_at)
     end
   end
 
@@ -96,6 +96,10 @@ class Planet < ApplicationRecord
     return self.is_direct_at(Time.now)
   end
 
+  def set_is_retrograde
+    self.is_retrograde = self.is_retrograde?
+  end
+
   def next_station_from(time)
     step = 60
     now = time
@@ -110,8 +114,8 @@ class Planet < ApplicationRecord
     return one_step_from_now
   end
 
-  def next_station
-    return self.next_station_from(Time.now)
+  def set_next_station
+    self.next_station = self.next_station_from(Time.now)
   end
 
 
