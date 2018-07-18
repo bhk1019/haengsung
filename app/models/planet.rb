@@ -10,10 +10,7 @@ class Planet < ApplicationRecord
     now = time
     one_step_from_now = now + step
     initial_longitude = longitude_at(one_step_from_now)
-    p self.current_sign
-    p longitude_to_sign(initial_longitude)
-    while self.current_sign == longitude_to_sign(initial_longitude).to_s do
-      p one_step_from_now
+    while self.current_sign == longitude_to_sign(initial_longitude) do
       one_step_from_now += step
       initial_longitude = longitude_at(one_step_from_now)
     end
