@@ -5,10 +5,17 @@ class PlanetsController < ApplicationController
     @planets = Planet.all
     @current_time = Time.new
     @planets.each do |planet|
-      planet.set_current_sign
-      planet.set_changes_sign_at
-      if planet.name != "Sun"
-        planet.set_is_retrograde
+      if planet.changes_sign_at < @current_time || planet.current_sign == nil
+        planet.set_current_sign
+        planet.set_changes_sign_at
+        planet.save
+      end
+      if planet.name != "Sun" && planet.name != "Moon"
+        if planet.next_station < @current_time || planet.is_retrograde == nil
+          planet.set_is_retrograde
+          planet.set_next_station
+          planet.save
+        end
       end
       planet.save
     end
