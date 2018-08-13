@@ -32,14 +32,14 @@
                   Upcoming astrological events:
                   <ul>
                     <li>
-                      <%= planet.name %> enters <%= planet.next_sign %> on <%= planet.changes_sign_at.strftime("%B %e, %Y") %>.
+                      <%= planet.name %> enters <%= planet.sign_at(planet.changes_sign_at) %> on <%= planet.changes_sign_at.strftime("%B %e, %Y") %>.
                     </li>
                     <% if planet.name != "Sun" && planet.name != "Moon" %>
                       <li>
                         <%= planet.name %> is <% if planet.is_retrograde %> in retrograde. <% else %> direct. <% end %>
                       </li>
                       <li>
-                        <%= planet.name %> will go <% if planet.is_retrograde %> direct <% else %> retrograde <% end %> on <%= planet.next_station.strftime("%B %e, %Y") %>.
+                        <%= planet.name %> will go <% if planet.is_retrograde %> direct in <%= planet.sign_at(planet.next_station) %> <% else %> retrograde in <%= planet.sign_at(planet.next_station) %> <% end %> on <%= planet.next_station.strftime("%B %e, %Y") %>.
                       </li>
                     <% end %>
                   </ul>

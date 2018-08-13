@@ -1,16 +1,15 @@
 class Planet < ApplicationRecord
 
-
   def set_current_sign
     self.current_sign = longitude_to_sign(self.current_longitude)
   end
 
   def next_sign_change_from(time)
-    step = 60 * 60 * 12
+    step = 60
     now = time
     one_step_from_now = now + step
     initial_longitude = longitude_at(one_step_from_now)
-    while self.current_sign == longitude_to_sign(initial_longitude) do
+    while self.current_sign == longitude_to_sign(initial_longitude).to_s do
       one_step_from_now += step
       initial_longitude = longitude_at(one_step_from_now)
     end
