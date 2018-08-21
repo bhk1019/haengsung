@@ -1,7 +1,6 @@
 <div class="container">
   <div class="col-8 offset-2">
-    <h4 class="text-center">At a glance planetary ephermerides.</h4>
-    <br />
+    <h4 class="text-center">At a glance planetary ephermerides for astrologers.</h4>
   </div>
 </div>
 
@@ -11,7 +10,7 @@
       <div class="row">
       <% @planets.order(:swe_id).each do |planet| %>
         
-        <div class="col-8 col-xs-8 col-sm-8 col-md-6 col-lg-4 offset-2 offset-md-3 offset-lg-1">
+        <div class="col-8 col-xs-8 col-sm-8 col-md-6 col-lg-4 offset-2 offset-md-3 offset-lg-1 card-container">
           <div class="card">
             
             <div class="card-header" id="heading<%= planet.name %>">
