@@ -1,24 +1,9 @@
-# README
+# haengsung
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Haengsung is an open source Rails application that provides at-a-glance information on planetary ephermerides commonly used in astrological readings.
 
-Things you may want to cover:
+## contributing
 
-* Ruby version
+If you would like to contribute, please fork the repository and submit a pull request. This app is a personal project and a constant work in progress!
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Haengsung uses the [Swe4r](https://github.com/aakara/swe4r) gem to assist with its computations of planetary positions. The Swe4r gem itself is based on the [Swiss Ephemeris](http://www.astro.com/swisseph/swephprg.htm) library, so please consult its documentation for help with using the gem.
