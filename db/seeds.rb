@@ -49,7 +49,6 @@ Planet.create(
 Planet.create(
   name: "Mars",
   description: "Your physical excitement, energy, leadership, and initiative.",
-  current_sign: nil,
   swe_id: 4,
   current_sign: nil,
   changes_sign_at: Time.new - 1,
